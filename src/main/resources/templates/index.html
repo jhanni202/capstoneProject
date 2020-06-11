@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<br>
+<br>
+<br>
+
+<header th:replace="fragments :: page-header"></header>
+<h1 th:text="${username}"></h1>
+<h2>Favorites</h2>
+<ul>
+    <li th:each="fav : ${favs}">
+        <a th:href="${fav.getLink()}" th:text="${fav.name}"></a>
+    </li>
+</ul>
+<h2>Recent Searches</h2>
+<ul>
+    <li></li>
+</ul>
+
 
 </body>
 </html>

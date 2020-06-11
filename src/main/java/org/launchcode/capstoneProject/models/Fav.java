@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Fav extends AbstractEntity{
 
-    @ManyToOne
-    private User user;
+    @NotNull
+    private int user_id;
 
     @NotNull
     private String name;
@@ -37,6 +37,14 @@ public class Fav extends AbstractEntity{
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     @Override

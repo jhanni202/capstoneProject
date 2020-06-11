@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head></head>
+<head th:replace="fragments :: head"></head>
 <body class="container">
-
+<br>
+<br>
+<br>
 <header th:replace="fragments :: page-header"></header>
-
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-<input id="search" ><button onclick="getrecepe(document.getElementById('search').value)">Search</button>
+<input id="search" ><button id="searchButton" onclick="getrecepe(document.getElementById('search').value)">Search</button>
 <div id="output"></div>
-<a href="" id="sourceLink"></a>
+<a href="" id="sourceLink1"></a>
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label class="collapse" th:for="name">Fav Name</label>
+        <input id = "favName1" class="collapse" th:field="${fav.name}" />
+    </div>
+    <div class="form-group">
+        <label class="collapse" th:for="link">Fav Link</label>
+        <input id = "favLink1" class="collapse" th:field="${fav.link}" />
+    </div>
+    <input type="submit" value="Add Fav" id="fav1" />
+</form>
 <div id="output2"></div>
 <a href="" id="sourceLink2"></a>
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label class="collapse" th:for="name">Fav Name</label>
+        <input id = "favName2" class="collapse" th:field="${fav.name}" />
+    </div>
+    <div class="form-group">
+        <label class="collapse" th:for="link">Fav Link</label>
+        <input id = "favLink2" class="collapse" th:field="${fav.link}" />
+    </div>
+    <input type="submit" value="Add Fav" id="fav2"  />
+</form>
 <div id="output3"></div>
 <a href="" id="sourceLink3"></a>
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label class="collapse" th:for="name">Fav Name</label>
+        <input id = "favName3" class="collapse" th:field="${fav.name}" />
+    </div>
+    <div class="form-group">
+        <label class="collapse" th:for="link">Fav Link</label>
+        <input id = "favLink3" class="collapse" th:field="${fav.link}" />
+    </div>
+    <input type="submit" value="Add Fav" id="fav3"  />
+</form>
+
 
 <script>
-
-function getsource(id){
+    function getsource(id){
 $.ajax({
 url:"https://api.spoonacular.com/recipes/"+id+"/information?apiKey=db254b5cd61744d39a2deebd9c361444&number=3&query=",
 success: function(res) {
@@ -35,21 +69,34 @@ success: function(res) {
 
 document.getElementById("output").innerHTML="<h1>"+res.results[0].title+"</h1><br><img src='"+res.baseUri+res.results[0].image+"' width='400' /><br>Ready in "+res.results[0].readyInMinutes+" minutes"
 getsource(res.results[0].id)
-document.getElementById("sourceLink").innerHTML=res.results[0].title
-document.getElementById("sourceLink").href=res.results[0].sourceUrl
+document.getElementById("sourceLink1").innerHTML=res.results[0].title
+document.getElementById("sourceLink1").href=res.results[0].sourceUrl
+document.getElementById('favName1').value = innerHTML=res.results[0].title
+document.getElementById('favLink1').value = res.results[0].sourceUrl
 
 document.getElementById("output2").innerHTML="<h1>"+res.results[1].title+"</h1><br><img src='"+res.baseUri+res.results[1].image+"' width='400' /><br>Ready in "+res.results[1].readyInMinutes+" minutes"
 getsource(res.results[1].id)
 document.getElementById("sourceLink2").innerHTML=res.results[1].sourceUrl
 document.getElementById("sourceLink2").href=res.results[1].sourceUrl
+document.getElementById('favName2').value = innerHTML=res.results[1].title
+document.getElementById('favLink2').value = res.results[1].sourceUrl
 
 document.getElementById("output3").innerHTML="<h1>"+res.results[2].title+"</h1><br><img src='"+res.baseUri+res.results[2].image+"' width='400' /><br>Ready in "+res.results[2].readyInMinutes+" minutes"
 getsource(res.results[2].id)
-document.getElementById("sourceLink3").innerHTML=res.results[2].sourceUrl
+document.getElementById("sourceLink3").innerHTML=res.results[2].title
 document.getElementById("sourceLink3").href=res.results[2].sourceUrl
+document.getElementById('favName3').value = innerHTML=res.results[2].title
+document.getElementById('favLink3').value = res.results[2].sourceUrl
 }
 });
 }
+
+
+
+
+
+
+
 
 </script>
 

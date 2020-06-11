@@ -12,9 +12,7 @@ import java.util.List;
 @Entity
 public class User extends AbstractEntity {
 
-    @OneToMany
-    @JoinColumn
-    private List<Fav> favs = new ArrayList<>();
+
 
     @OneToMany
     @JoinColumn
@@ -43,13 +41,6 @@ public class User extends AbstractEntity {
         return username;
     }
 
-    public List<Fav> getFavs() {
-        return favs;
-    }
-
-    public void setJobs(List<Fav> favs) {
-        this.favs = favs;
-    }
 
     public List<Ingredient> getIngredients() {
         return ingredients;
